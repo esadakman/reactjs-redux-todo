@@ -12,30 +12,28 @@ const initialState = {
 };
 
 const todoReducer = (state = initialState, { type, payload }) => {
+  // console.log(state.todoList[0].completed);
+
   switch (type) {
     case ADD_TODO:
       return {
-        ...state.todoList.id,
-
-        // todoList: [
-        //   ...state.todoList,
-        //   { id: new Date().getTime(), text: payload, completed: false },
-        // ],
+        todoList: [
+          ...state.todoList,
+          { id: new Date().getTime(), text: payload, completed: false },
+        ],
       };
     case DELETE_TODO:
       return {
-        ...state.todoList.id,
-        // todoList: [
-        //   ...state.todoList,
-        //   { id: new Date().getTime(), text: payload, completed: false },
-        // ],
-        // ...state, ...payload
+        ...state,
+        todoList: state.todoList.filter((todo) => todo.id !== payload),
       };
     case TOGGLE_TODO:
-      return {
-        todoList: [...state.todoList, { id: payload.id, completed: true }],
-        // ...state, ...payload
-      };
+      state.todoList.map((item) => {
+        if (item.id === payload) item.completed = !item.completed;
+      });
+      // return { todoList: [...state.todoList] };
+      return { todoList: [...state.todoList] };
+
     case CLEAR_TODO:
       return initialState;
     default:
