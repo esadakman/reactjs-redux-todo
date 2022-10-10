@@ -55,7 +55,7 @@ SOLUTION
 To run this project;  
 
 ```
-$ git clone https://github.com/esadakman/redux_todo_exercise 
+$ git clone https://github.com/esadakman/reactjs-redux-todo.git
 $ cd ./redux_todo_exercise 
 $ npm install / yarn
 $ npm start / yarn start
